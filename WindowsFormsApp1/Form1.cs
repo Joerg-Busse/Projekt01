@@ -24,21 +24,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {           
 
-            IWebDriver driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl("https://www.google.de/");
-            Thread.Sleep(2000);            
-
-            IWebElement ele = driver.FindElement(By.Name("q"));
-            ele.SendKeys("triebwerk duisburg");
-            Thread.Sleep(2000);
-
-            IWebElement eleBtn = driver.FindElement(By.Name("btnK"));
-
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].click();", eleBtn);           
-            Thread.Sleep(2000);
-
-            driver.Close();
+           
         }
     }
 }
