@@ -17,7 +17,9 @@ namespace WindowsFormsApp1
         [SetUp]
         public void Initialize()
         {
-            //SetUp: The SetUp attribute is used to identify a method to be called immediately; each test runs.
+            //SetUp: The SetUp attribute is used to identify a method 
+            //to be called immediately; each test runs.
+
             //open the browser              
             driver.Navigate().GoToUrl("https://www.google.de/");
             driver.Manage().Window.Maximize();
@@ -42,7 +44,10 @@ namespace WindowsFormsApp1
         [TearDown]
         public void EndTest()
         {
-            //TearDown: this attribute is used to identify a method that is to be called immediately after each test is executed. And this method is guaranteed to be called, even if an exception is thrown.
+            //TearDown: this attribute is used to identify a method 
+            //that is to be called immediately after each test is executed. 
+            //And this method is guaranteed to be called, even if an exception is thrown.
+
             //close the browser 
             driver.Close();
         }
