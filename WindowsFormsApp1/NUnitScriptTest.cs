@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using NUnit.Framework;
+using WindowsFormsApp1.ExtensionMethods;
+using OpenQA.Selenium.Firefox;
 
 namespace WindowsFormsApp1
 {
-    class NUnitScriptTest
-    {
-        IWebDriver driver = new FirefoxDriver();
+    public class NUnitScriptTest
+    {       
 
         [SetUp]
         public void Initialize()
@@ -20,25 +20,52 @@ namespace WindowsFormsApp1
             //SetUp: The SetUp attribute is used to identify a method 
             //to be called immediately; each test runs.
 
+            PropertiesCollection.driver = new FirefoxDriver();
+
             //open the browser              
-            driver.Navigate().GoToUrl("https://www.google.de/");
-            driver.Manage().Window.Maximize();
+            PropertiesCollection.driver.Navigate().GoToUrl("https://www.google.de/");
+            PropertiesCollection.driver.Manage().Window.Maximize();
             Thread.Sleep(2000);
+
+            Console.WriteLine("Start Chrome Browser");
         }
 
         [Test]
         public void ExecuteTest()
         {
+            //Login to Application
+            LoginPageObject pageLogin = new LoginPageObject();
+            EAPageObjects pageEA = pageLogin.Login("derusername", "daspasswort");
+            pageEA.FillUserForm("triebwerk duisburg");
+
+            
+            //Page initialisieren und dessen reference aufrufen
+            //EAPageObjects pageEA = new EAPageObjects();
+            //pageEA.txtQ.SendKeys("triebwerk duisburg");
+            //pageEA.btnBtnK.Click();
+
+
+            //SeleniumSetMethods.EnterText("q", "triebwerk duisburg", PropertyType.Name);
+            //Console.WriteLine("The value for q is : " + SeleniumGetMethods.GetText("q", PropertyType.Name));
+            
+
+            //SeleniumSetMethods.Click("btnK", PropertyType.Name); => wirft bei Firefox Browser fehler
+            //IWebElement eleBtn = PropertiesCollection.driver.FindElement(By.Name("btnK"));
+            //IJavaScriptExecutor js = (IJavaScriptExecutor)PropertiesCollection.driver;
+            //js.ExecuteScript("arguments[0].click();", eleBtn);
+            //Thread.Sleep(2000);
+            
+
             //perform browser operations  
-            IWebElement ele = driver.FindElement(By.Name("q"));
-            ele.SendKeys("triebwerk duisburg");
-            Thread.Sleep(2000);
+            //IWebElement ele = PropertiesCollection.driver.FindElement(By.Name("q"));
+            //ele.SendKeys("triebwerk duisburg");
+            //Thread.Sleep(2000);
 
-            IWebElement eleBtn = driver.FindElement(By.Name("btnK"));
 
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].click();", eleBtn);
-            Thread.Sleep(2000);
+            //IWebElement eleBtn = PropertiesCollection.driver.FindElement(By.Name("btnK"));
+            //IJavaScriptExecutor js = (IJavaScriptExecutor)PropertiesCollection.driver;
+            //js.ExecuteScript("arguments[0].click();", eleBtn);
+            //Thread.Sleep(2000);
         }
 
         [TearDown]
@@ -49,7 +76,7 @@ namespace WindowsFormsApp1
             //And this method is guaranteed to be called, even if an exception is thrown.
 
             //close the browser 
-            driver.Close();
+            PropertiesCollection.driver.Close();
         }
     }
 }
