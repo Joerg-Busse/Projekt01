@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.Firefox;
 using WindowsFormsApp1.Browsers;
 using WindowsFormsApp1.Selenium;
 using WindowsFormsApp1.ExtensionMethods;
@@ -33,12 +31,9 @@ namespace WindowsFormsApp1
        
         private void Form1_Load(object sender, EventArgs e)
         {
-
             // !!!!! https://www.youtube.com/watch?v=mluLgBywW0Y&list=PL6tu16kXT9PqKSouJUV6sRVgmcKs-VCqo&index=1 
-
             //IWebDriver driver = new Firefox();
             //driver.SendKeysWithSplChar("eins", "zwei");
-
             //NUnitScriptTest nunittest = new NUnitScriptTest();
             //nunittest.Initialize();
         }
