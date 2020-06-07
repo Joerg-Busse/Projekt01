@@ -14,13 +14,13 @@ using WindowsFormsApp1.ExtensionMethods;
 using OpenQA.Selenium.Chrome;
 
 namespace WindowsFormsApp1
-{
-    //das ist ein Testkommentar
+{    
     enum Browser
     {
         Firefox,
         Chrome,
-        IE
+        IE,
+        test
     }
 
     public partial class Form1 : Form
