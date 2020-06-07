@@ -15,6 +15,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace WindowsFormsApp1
 {
+    //das ist ein Testkommentar
     enum Browser
     {
         Firefox,
